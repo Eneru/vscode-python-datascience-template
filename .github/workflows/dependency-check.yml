@@ -15,7 +15,7 @@ jobs:
         uses: dependency-check/Dependency-Check_Action@main
         with:
           project: "${{ github.event.repository.name }}"
-          path: '/github/workspace/.'
+          path: '.'
           format: 'JSON'
           out: 'reports'
           args: >
