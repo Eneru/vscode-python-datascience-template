@@ -20,6 +20,8 @@ cd my-project
 code .
 ```
 
+> If you want to use JupyterLab, you must uncomment the installation, execution on container start and appPort in .devcontainer/devcontainer.json.
+
 You should reopen VSCode in a devcontainer.
 
 Then give the rights to your user to the files that will be overwritten:
