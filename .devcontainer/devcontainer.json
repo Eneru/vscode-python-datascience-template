@@ -1,0 +1,78 @@
+{
+	"name": "Python 3",
+	// Waiting on a fix of the image to use it instead of copying it https://github.com/microsoft/vscode-remote-release/issues/10716
+	// "image": "ghcr.io/microsoft/datascience-py-r/datascience-python-r:1.0.0",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "latest"
+		},
+		//"ghcr.io/devcontainers/features/anaconda:1": {},
+		"ghcr.io/devcontainers-extra/features/mkdocs:2": {
+			"plugins": "mkdocs-material pymdown-extensions mkdocstrings[crystal,python] mkdocs-monorepo-plugin mkdocs-pdf-export-plugin mkdocs-awesome-pages-plugin"
+		},
+		"ghcr.io/devcontainers-extra/features/pre-commit:2": {},
+		"ghcr.io/rocker-org/devcontainer-features/r-apt:latest": {
+			"vscodeRSupport": "full",
+			"installDevTools": true,
+			"installRadian": true,
+			"installRMarkdown": true,
+			"installVscDebugger": true
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "r-cran-data.table,r-cran-tidyverse",
+			"upgradePackages": true
+		}
+	},
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/rocker-org/devcontainer-features/r-apt"
+	],
+
+	"postCreateCommand": "pip install cookiecutter-data-science",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"[python]": {
+					"defaultInterpreterPath": "/opt/conda/bin/python",
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.formatOnType": true,
+					"editor.formatOnSave": true
+				},
+				"[jupyter]": {
+					"themeMatplotlibPlots": true,
+					"widgetScriptSources": [
+						"unpkg.com",
+						"jsdelivr.com"
+					]
+				},
+				"[r]": {
+					"rterm.linux": "/usr/local/bin/radian",
+					"r.bracketedPaste": true
+				},
+				"editor.inlineSuggest.enabled": true,
+				"editor.lineHeight": 17,
+				"breadcrumbs.enabled": false,
+				"files.autoSave": "afterDelay",
+				"notebook.output.scrolling": true,
+				"files.exclude": {
+					"**/.csv": true,
+					"**/.parquet": true,
+					"**/.pkl": true,
+					"**/.xls": true
+				}
+			
+			},
+			"extensions": [
+				"ms-toolsai.datawrangler",
+				"ms-toolsai.vscode-jupyter-cell-tags",
+				"ms-python.black-formatter",
+				"ms-toolsai.jupyter",
+				"ms-python.python",
+				"reditorsupport.r"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}

@@ -1,0 +1,27 @@
+name: Dependency-Check
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  dependency-check:
+    name: Dependency-Check
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download OWASP Dependency Check
+        run: |
+          VERSION=$(curl -s https://dependency-check.github.io/DependencyCheck/current.txt)
+          curl -Ls "https://github.com/dependency-check/DependencyCheck/releases/download/v$VERSION/dependency-check-$VERSION-release.zip" --output dependency-check.zip
+          unzip dependency-check.zip
+      - name: Run Dependency Check
+        run: |
+          ./dependency-check/bin/dependency-check.sh --out dependency-report.html --scan .
+          rm -rf dependency-check*
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-report
+          path: dependency-report.html
