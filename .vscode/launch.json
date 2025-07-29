@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "Débogueur Python : Fichier actuel avec arguments",
+      "name": "Python: Debug actual file with args",
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
@@ -9,11 +9,32 @@
       "args": ["${command:pickArgs}"]
     },
     {
-      "name": "Débogueur Python : Fichier actuel",
+      "name": "Python: Debug actual file",
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Python (Streamlit) : Debug actual file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "${file}",
+        "--server.port",
+        "2000"
+      ]
+    },
+    {
+      "name": "Python: Debug actual Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "purpose": ["debug-test"],
+      "console": "integratedTerminal",
+      "justMyCode": false
     }
   ]
 }

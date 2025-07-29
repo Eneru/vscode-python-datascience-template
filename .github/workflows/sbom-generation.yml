@@ -2,7 +2,7 @@ name: CycloneDX SBOM generation
 on:
   push:
     tags: 
-        '**'
+        ['**']
 jobs:
   static-analysis:
     name: CycloneDX SBOM generation
