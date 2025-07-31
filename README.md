@@ -29,6 +29,7 @@ Then give the rights to your user to the files that will be overwritten:
 ```bash
 sudo chown $USER:$USER README.md
 sudo chown $USER:$USER .gitignore
+sudo chown $USER:$USER LICENSE
 ```
 
 Create a project in a terminal using ccds *(the `-f` parameter will override the files)* from the parent directory:
@@ -46,6 +47,7 @@ Go back to the directory and give files rights back to root:
 cd my-project
 sudo chown root README.md
 sudo chown root .gitignore
+sudo chown root LICENSE
 ```
 
 Then configure pre-commit *(if you want to execute gitleaks every time you commit)*:
