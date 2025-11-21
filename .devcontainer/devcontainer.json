@@ -91,6 +91,7 @@
 				"ms-toolsai.jupyter",
 				"ms-python.python",
 				"ms-vscode.makefile-tools",
+				"Google.colab",
 				// Uncomment if you use R
 				// "reditorsupport.r"
 			]
